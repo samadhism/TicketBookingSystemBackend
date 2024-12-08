@@ -18,6 +18,7 @@ public class Configuration {
     public void setCustomerRetrievalRate(int customerRetrievalRate) {
         this.customerRetrievalRate = customerRetrievalRate;
     }
+
     public void setMaxTicketCapacity(int maxTicketCapacity) {
         this.maxTicketCapacity = maxTicketCapacity;
     }
