@@ -1,10 +1,9 @@
 package com.controller;
 
+import com.model.Customers;
 import com.model.TicketPoolingSystem;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.model.Vendors;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -14,17 +13,47 @@ public class TicketController {
     private int ticketReleaseRate;
     private int customerRetrievalRate;
     private int maxTicketCapacity;
-    private int numberOfVendors;
-    private int numberOfCustomers;
+    private int vendorCount;
+    private int customerCount;
     private TicketPoolingSystem ticketPool;
 
 
     @PostMapping("/configuration")
-    public String Configuration() {
+    public String Configuration(@RequestParam int totalTickets, @RequestParam int ticketReleaseRate,@RequestParam int customerRetrievalRate,@RequestParam int maxTicketCapacity) {
         this.totalTickets = totalTickets;
         this.ticketReleaseRate = ticketReleaseRate;
+        this.customerRetrievalRate = customerRetrievalRate;
+        this.maxTicketCapacity = maxTicketCapacity;
 
+        ticketPool = new TicketPoolingSystem();
+        return "Configuration completed successfully";
+    }
 
-        return"Configuration successfully";
+    @PostMapping("/set-vendors")
+    public String setVendors(@RequestParam int vendorCount){
+        this.vendorCount = vendorCount;
+        return "Vendor Count set successfully";
+
+    }
+
+    @PostMapping("/set-customers")
+    public String setCustomers(@RequestParam int customerCount){
+        this.customerCount = customerCount;
+        return "Customer Count set successfully";
+    }
+
+    @PostMapping("/start")
+    public String startTheSystem(){
+        if (vendorCount > 0) {
+            for (int i = 0; i < vendorCount; i++) {
+                Vendors vendor = new Vendors(ticketPool,(i+1));
+                new Thread(vendor).start();
+            }
+            for (int i = 0; i < customerCount; i++) {
+                Customers customer = new Customers(ticketPool,(i+1));
+                new Thread(customer).start();
+            }
+        }
+        return "System started ";
     }
 }

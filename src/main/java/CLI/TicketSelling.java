@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class Ticketselling {
+public class TicketSelling {
     private static Configuration  configuration = new Configuration();
     private static final String CONFIG_FILE_PATH = "configuration.json"; // File path for the JSON file
 
