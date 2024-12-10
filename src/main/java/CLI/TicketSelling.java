@@ -67,8 +67,8 @@ public class TicketSelling {
     private static void addConfiguration(Scanner input) {
         try {
             configuration.setTotalTickets(getPositiveInt(input, "Enter total tickets: "));
-            configuration.setTicketReleaseRate(getPositiveInt(input, "Enter ticket release rate (in seconds): "));
-            configuration.setCustomerRetrievalRate(getPositiveInt(input, "Enter customer retrieval rate (in seconds): "));
+            configuration.setTicketReleaseRate(getPositiveInt(input, "Enter ticket release rate: "));
+            configuration.setCustomerRetrievalRate(getPositiveInt(input, "Enter customer retrieval rate: "));
             configuration.setMaxTicketCapacity(getPositiveInt(input, "Enter max ticket capacity: "));
 
             System.out.println("Configuration added successfully!");

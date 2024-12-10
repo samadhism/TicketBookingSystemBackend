@@ -25,7 +25,7 @@ public class TicketController {
         this.customerRetrievalRate = customerRetrievalRate;
         this.maxTicketCapacity = maxTicketCapacity;
 
-        ticketPool = new TicketPoolingSystem();
+        ticketPool = new TicketPoolingSystem(maxTicketCapacity);
         return "Configuration completed successfully";
     }
 
