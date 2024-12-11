@@ -9,7 +9,7 @@ public class Vendors implements Runnable {
         this.vendorId = vendorId;
     }
 
-    public void run(){
+    public void run() {
         while (true) {
             try {
                 Thread.sleep(1000);
