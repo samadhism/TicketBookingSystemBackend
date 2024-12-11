@@ -1,8 +1,8 @@
-TicketBooking System
+Ticket Booking System
 
 Introduction
 
-The TicketBooking System is a real-time event ticketing platform designed to streamline the process of browsing, booking, and managing tickets for events. This system leverages Java Spring Boot for the backend and integrates a robust user interface to ensure a seamless experience for users.
+The Ticket Booking System is a real-time platform designed to manage and streamline the ticketing process for events. Built with a Spring Boot backend and a React.js frontend, the system supports secure user authentication, seamless ticket purchasing, and administrative controls for event management. Its interactive UI and robust functionality make it an ideal solution for event organizers and attendees alike.
 
 Setup Instructions
 
@@ -10,62 +10,82 @@ Prerequisites
 
 To set up and run the application, ensure you have the following installed:
 
-Java Development Kit (JDK): Version 17 or higher
+Java Development Kit (JDK): Version 11 or higher
 
-Apache Maven: Version 3.8.1 or higher
+Node.js and npm: Latest LTS version
 
-Node.js and npm: Version 16 or higher (if the frontend is separate and managed with Node.js)
+MySQL Database: Version 8.0 or higher
 
-MySQL: For database setup
+Maven: Version 3.6.3 or higher
 
-How to Build and Run the Application
+Backend Setup
 
-Clone the Repository
+Navigate to the backend directory of the project:
 
-git clone <repository_url>
-cd TicketBooking
+cd backend
 
-Configure the Database
+Configure the database connection in the application.properties file:
 
-Open the src/main/resources/application.properties file.
-
-Update the database configuration:
-
-spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
+spring.datasource.url=jdbc:mysql://localhost:3306/ticket_booking
 spring.datasource.username=your_username
 spring.datasource.password=your_password
 
-Build the Application
+Build the backend application using Maven:
 
-Run the Maven build command:
+mvn clean install
 
-./mvnw clean install
+Run the Spring Boot application:
 
-Run the Application
+mvn spring-boot:run
 
-Start the Spring Boot application:
+Frontend Setup
 
-./mvnw spring-boot:run
+Navigate to the frontend directory of the project:
+
+cd frontend
+
+Install dependencies:
+
+npm install
+
+Start the React.js application:
+
+npm start
+
+Access the application at http://localhost:3000.
 
 Usage Instructions
 
 Configuring the System
 
-Ensure the database is up and running with the required schema.
+Ensure the backend and frontend are running.
 
-Load any initial data, if necessary, using scripts or manual insertion.
+Create initial data by running the provided SQL script (initial_data.sql) in your MySQL database.
 
-Starting the System
-
-Access the application by navigating to http://localhost:8080 in your web browser after starting the backend.
+Open the application in your browser and log in as an administrator to configure events and ticket types.
 
 UI Controls
 
-Browse Events: View a list of available events with details.
+Login Page:
 
-Search Bar: Locate events by name, date, or location.
+Enter your credentials to access the platform.
 
-Book Tickets: Select an event and specify the number of tickets to book.
+Dashboard:
 
-Manage Bookings: View or cancel existing bookings through the user profile.
+Admin users can manage events, view sales data, and monitor user activity.
 
+Regular users can browse available events and purchase tickets.
+
+Event Listing:
+
+Displays a list of upcoming events.
+
+Clicking on an event shows detailed information, including ticket availability.
+
+Ticket Purchase:
+
+Select the number of tickets and proceed to payment.
+
+User Profile:
+
+View and manage your ticket purchases and account settings.
